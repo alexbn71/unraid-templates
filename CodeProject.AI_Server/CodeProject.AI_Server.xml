@@ -7,7 +7,7 @@
   <MyIP/>
   <Shell>sh</Shell>
   <Privileged>false</Privileged>
-  <Support>https://www.codeproject.com/Forums/1969389/Artificial-Intelligence</Support>
+  <Support>https://www.codeproject.com/Forums/1869052/CodeProject-API</Support>
   <Project>https://www.codeproject.com/ai/docs/</Project>
   <Overview>Fast, free, self-hosted Artificial Intelligence Server for any platform, any language.&#xD;
 CodeProject.AI Server is a locally installed, self-hosted, fast, free and Open Source Artificial Intelligence server for any platform, any language. No off-device or out of network data transfer, no messing around with dependencies, and able to be used from any platform, any language. Runs as a Windows Service or a Docker container.&#xD;
