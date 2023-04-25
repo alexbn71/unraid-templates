@@ -26,5 +26,7 @@ One among many examples of use: it can be easily integrated in AgentDVR Video Su
   <DonateText/>
   <DonateLink/>
   <Requires/>
-  <Config Name="Host Port 1" Target="5000" Default="" Mode="tcp" Description="" Type="Port" Display="always" Required="false" Mask="false">5000</Config>
+  <Config Name="Host Port 1" Target="32168" Default="" Mode="tcp" Description="" Type="Port" Display="always" Required="false" Mask="false">32168</Config>
+  <Config Name="Host Path 1" Target="/etc/codeproject/ai" Default="" Mode="rw" Description="" Type="Path" Display="always" Required="false" Mask="false">/mnt/user/appdata/codeprojectai/data</Config>
+  <Config Name="Host Path 2" Target="/app/modules" Default="" Mode="rw" Description="" Type="Path" Display="always" Required="false" Mask="false">/mnt/user/appdata/codeprojectai/modules</Config>
 </Container>
