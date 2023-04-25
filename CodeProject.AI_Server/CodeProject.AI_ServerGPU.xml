@@ -12,6 +12,7 @@
   <Overview>Fast, free, self-hosted Artificial Intelligence Server for any platform, any language.&#xD;
 CodeProject.AI Server is a locally installed, self-hosted, fast, free and Open Source Artificial Intelligence server for any platform, any language. No off-device or out of network data transfer, no messing around with dependencies, and able to be used from any platform, any language. Runs as a Windows Service or a Docker container.&#xD;
 &#xD;
+The Docker GPU version is specific to nVidia's CUDA enabled cards with compute capability >= 6.0&#xD;
 It may take some time to install as the image takes up a few GB of space!&#xD;
 &#xD;
 One among many examples of use: it can be easily integrated in AgentDVR Video Surveillance Software for face or object recognition.</Overview>
