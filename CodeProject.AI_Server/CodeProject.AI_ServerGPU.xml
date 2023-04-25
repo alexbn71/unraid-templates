@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>CodeProject.AI_ServerGPU</Name>
+  <Repository>codeproject/ai-server:gpu</Repository>
+  <Registry>https://hub.docker.com/r/codeproject/ai-server</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://www.codeproject.com/Forums/1969389/Artificial-Intelligence</Support>
+  <Project>https://www.codeproject.com/ai/docs/</Project>
+  <Overview>Fast, free, self-hosted Artificial Intelligence Server for any platform, any language.&#xD;
+CodeProject.AI Server is a locally installed, self-hosted, fast, free and Open Source Artificial Intelligence server for any platform, any language. No off-device or out of network data transfer, no messing around with dependencies, and able to be used from any platform, any language. Runs as a Windows Service or a Docker container.&#xD;
+&#xD;
+It may take some time to install as the image takes up a few GB of space!&#xD;
+&#xD;
+One among many examples of use: it can be easily integrated in AgentDVR Video Surveillance Software for face or object recognition.</Overview>
+  <Category>Security:</Category>
+  <WebUI>http://mininas:[PORT:32168]</WebUI>
+  <TemplateURL/>
+  <Icon>https://codeproject.freetls.fastly.net/App_Themes/CodeProject/Img/logo250x135.gif</Icon>
+  <ExtraParams>--gpus all</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled>1682413349</DateInstalled>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="Host Port 1" Target="32168" Default="" Mode="tcp" Description="" Type="Port" Display="always" Required="false" Mask="false">32168</Config>
+  <Config Name="Host Path 1" Target="/etc/codeproject/ai" Default="" Mode="rw" Description="" Type="Path" Display="always" Required="false" Mask="false">/mnt/user/appdata/codeprojectai/data</Config>
+  <Config Name="Host Path 2" Target="/app/modules" Default="" Mode="rw" Description="" Type="Path" Display="always" Required="false" Mask="false">/mnt/user/appdata/codeprojectai/modules</Config>
+</Container>
