@@ -16,7 +16,7 @@ It may take some time to install as the image takes up a few GB of space!&#xD;
 &#xD;
 One among many examples of use: it can be easily integrated in AgentDVR Video Surveillance Software for face or object recognition.</Overview>
   <Category>Security:</Category>
-  <WebUI>http://[IP]:[PORT:5000]</WebUI>
+  <WebUI>http://[IP]:[PORT:32168]</WebUI>
   <TemplateURL/>
   <Icon>https://codeproject.freetls.fastly.net/App_Themes/CodeProject/Img/logo250x135.gif</Icon>
   <ExtraParams/>
