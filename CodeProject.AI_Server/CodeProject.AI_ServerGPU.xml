@@ -16,7 +16,7 @@ The Docker GPU version is specific to nVidia's CUDA enabled cards with compute c
 It may take some time to install as the image takes up a few GB of space!&#xD;
 &#xD;
 One among many examples of use: it can be easily integrated in AgentDVR Video Surveillance Software for face or object recognition.</Overview>
-  <Category>Security:</Category>
+  <Category>AI:</Category>
   <WebUI>http://[IP]:[PORT:32168]</WebUI>
   <TemplateURL/>
   <Icon>https://raw.githubusercontent.com/alexbn71/unraid-templates/main/codeprojectaiserver_official.png</Icon>
