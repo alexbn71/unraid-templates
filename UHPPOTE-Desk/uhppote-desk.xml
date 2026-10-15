@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!--
+  Unraid template for UHPPOTE Desk.
+  Copy to /boot/config/plugins/dockerMan/templates-user/my-uhppote-desk.xml,
+  then Docker → Add Container → Template: uhppote-desk.
+  Full guide: https://github.com/alexbn71/UHPPOTE-Desk/blob/main/docs/DOCKER.md
+-->
+<Container version="2">
+  <Name>uhppote-desk</Name>
+  <Repository>ghcr.io/alexbn71/uhppote-desk:latest</Repository>
+  <Registry>https://github.com/alexbn71/UHPPOTE-Desk/pkgs/container/uhppote-desk</Registry>
+  <Network>host</Network>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/alexbn71/UHPPOTE-Desk</Support>
+  <Project>https://github.com/alexbn71/UHPPOTE-Desk</Project>
+  <Overview>Management of UHPPOTE UT0311-L0x access controllers. Requires "host" networking to discover the controllers and receive their UDP events. User interface in English, Italian, Spanish, French and German.</Overview>
+  <Category>HomeAutomation: Security:</Category>
+  <WebUI>http://[IP]:8080/</WebUI>
+  <Icon>https://raw.githubusercontent.com/alexbn71/UHPPOTE-Desk/main/apps/web/public/icon-512.png</Icon>
+  <ExtraParams>--restart unless-stopped</ExtraParams>
+  <Config Name="Data" Target="/data" Default="/mnt/user/appdata/uhppote-desk" Mode="rw" Description="Database, backups, test reports" Type="Path" Display="always" Required="true">/mnt/user/appdata/uhppote-desk</Config>
+  <Config Name="PUID" Target="PUID" Default="99" Description="User ID that will own the data folder (Unraid: 99 = nobody)" Type="Variable" Display="advanced" Required="true">99</Config>
+  <Config Name="PGID" Target="PGID" Default="100" Description="Group ID that will own the data folder (Unraid: 100 = users)" Type="Variable" Display="advanced" Required="true">100</Config>
+  <Config Name="Web port" Target="HTTP_PORT" Default="8080" Description="Port of the web interface (host networking: change it if already used by another container)" Type="Variable" Display="always" Required="true">8080</Config>
+  <Config Name="Admin password" Target="ADMIN_PASSWORD" Default="" Description="Password of the admin user, applied at every start. If empty, a password is generated on the first start (see the log) and must be changed at first login" Type="Variable" Display="always" Required="false" Mask="true"></Config>
+  <Config Name="Local IP facing the controllers" Target="UHPPOTE_BIND_ADDR" Default="0.0.0.0" Description="Server IP on the controllers' network (0.0.0.0 = all interfaces)" Type="Variable" Display="advanced" Required="false">0.0.0.0</Config>
+  <Config Name="Discovery broadcast" Target="UHPPOTE_BROADCAST" Default="255.255.255.255:60000" Description="Broadcast address used to discover controllers; the broadcast of the controllers' subnet is recommended, e.g. 192.168.1.255:60000" Type="Variable" Display="always" Required="true">255.255.255.255:60000</Config>
+  <Config Name="Event listen address" Target="UHPPOTE_LISTEN" Default="0.0.0.0:60001" Description="UDP address:port on which events are received" Type="Variable" Display="advanced" Required="true">0.0.0.0:60001</Config>
+  <Config Name="Event destination" Target="UHPPOTE_LISTENER_PUBLIC" Default="" Description="IP:port of this server as reached by the controllers, e.g. 192.168.1.10:60001 (without it events arrive only through periodic polling)" Type="Variable" Display="always" Required="true"></Config>
+  <Config Name="HTTPS-only cookies" Target="SECURE_COOKIES" Default="false" Description="true if published behind an HTTPS reverse proxy" Type="Variable" Display="advanced" Required="false">false</Config>
+  <Config Name="Packet debug" Target="UHPPOTE_DEBUG" Default="false" Description="Log every packet in hexadecimal" Type="Variable" Display="advanced" Required="false">false</Config>
+  <Config Name="Public address" Target="PUBLIC_URL" Default="" Description="Public HTTPS address behind a reverse proxy, e.g. https://doors.example.com (mobile app: fingerprint/Face ID, push). See docs/MOBILE.md" Type="Variable" Display="always" Required="false"></Config>
+  <Config Name="MQTT broker" Target="MQTT_URL" Default="" Description="Home Assistant integration: MQTT broker URL, e.g. mqtt://192.168.1.10:1883 (empty = disabled). See docs/HOME-ASSISTANT.md" Type="Variable" Display="always" Required="false"></Config>
+  <Config Name="MQTT username" Target="MQTT_USERNAME" Default="" Description="MQTT broker user" Type="Variable" Display="always" Required="false"></Config>
+  <Config Name="MQTT password" Target="MQTT_PASSWORD" Default="" Description="MQTT broker password" Type="Variable" Display="always" Required="false" Mask="true"></Config>
+  <Config Name="MQTT door control" Target="MQTT_DOOR_CONTROL" Default="true" Description="false = Home Assistant can see the doors but not open them" Type="Variable" Display="advanced" Required="false">true</Config>
+  <Config Name="MQTT language" Target="MQTT_LANGUAGE" Default="en" Description="Language of the Home Assistant entity names and event texts: en, it, es, fr, de" Type="Variable" Display="advanced" Required="false">en</Config>
+  <Config Name="MQTT base topic" Target="MQTT_BASE_TOPIC" Default="uhppote-desk" Description="Prefix of the published topics" Type="Variable" Display="advanced" Required="false">uhppote-desk</Config>
+  <Config Name="MQTT discovery prefix" Target="MQTT_DISCOVERY_PREFIX" Default="homeassistant" Description="Home Assistant discovery prefix" Type="Variable" Display="advanced" Required="false">homeassistant</Config>
+  <Config Name="Time zone" Target="TZ" Default="Europe/Rome" Description="Used for the time set on the controllers and for reports" Type="Variable" Display="advanced" Required="true">Europe/Rome</Config>
+</Container>
