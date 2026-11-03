@@ -17,7 +17,7 @@
   <Project>https://nuvirahub.dev/en/pricing/</Project>
   <ReadMe>https://github.com/nuvira-hub/nuvira/blob/main/deploy/README.md</ReadMe>
   <TemplateURL>https://raw.githubusercontent.com/alexbn71/unraid-templates/main/NuviraHub/nuvira-server-pro.xml</TemplateURL>
-  <Overview>NuviraHub Pro server, for teams that support many computers with NuviraHub, the self-hosted remote desktop and remote support app.[br][br]
+  <Overview>NuviraHub Pro server, for teams that support many computers with NuviraHub, the self-hosted remote desktop and remote support app for Windows and Linux.[br][br]
 Everything in the open source server (signalling, relay, signed app updates, end-to-end encrypted sessions) plus: server address books shared by the team, accounts and roles, central rules for the devices, web console, two-factor authentication, single sign-on (OpenID Connect), session log and custom installers.[br][br]
 Needs a NuviraHub Pro licence key (see nuvirahub.dev; free for members of the Founders Program). Without a key it works like the open source server. The app is the same for both servers.</Overview>
   <Category>Network:Other Tools:</Category>
@@ -29,7 +29,7 @@ Needs a NuviraHub Pro licence key (see nuvirahub.dev; free for members of the Fo
   <Requires>A NuviraHub Pro licence key; the server checks it online at start-up and once a day (7 days of grace without Internet). Forward port 21116 UDP (and TCP for the WebSocket fallback) from the router to Unraid. To sign in to the web console from the Internet, put it behind an HTTPS reverse proxy: plain-HTTP logins are accepted only from the local network. Back up the Data folder: it holds the server's identity, which the apps pin, and the key of the address books.</Requires>
   <Changes>
 ### 0.14.0 (2026-10-31)
-- Current release of the Pro server: https://nuvirahub.dev
+- Current release of the Pro server, for the apps up to 0.15.0 (Windows and Linux): https://nuvirahub.dev
   </Changes>
   <Config Name="Port (UDP)" Target="21116" Default="21116" Mode="udp" Description="Signalling and relay (QUIC). Forward it on the router." Type="Port" Display="always" Required="true" Mask="false">21116</Config>
   <Config Name="Port (TCP)" Target="21116" Default="21116" Mode="tcp" Description="WebSocket fallback for networks that block UDP, app updates and the web console. Forward it on the router." Type="Port" Display="always" Required="false" Mask="false">21116</Config>
@@ -44,6 +44,7 @@ Needs a NuviraHub Pro licence key (see nuvirahub.dev; free for members of the Fo
   <Config Name="SSO client secret" Target="NUVIRA_OIDC_CLIENT_SECRET" Default="" Mode="" Description="Secret of that application." Type="Variable" Display="advanced" Required="false" Mask="true"></Config>
   <Config Name="SSO button name" Target="NUVIRA_OIDC_NAME" Default="SSO" Mode="" Description="Shown as Sign in with NAME, e.g. Microsoft or Google." Type="Variable" Display="advanced" Required="false" Mask="false">SSO</Config>
   <Config Name="SSO new accounts role" Target="NUVIRA_OIDC_ROLE" Default="technician" Mode="" Description="technician or readonly." Type="Variable" Display="advanced" Required="false" Mask="false">technician</Config>
+  <Config Name="SSO username claim" Target="NUVIRA_OIDC_USERNAME_CLAIM" Default="" Mode="" Description="Claim used as the NuviraHub username; empty: preferred_username, then email." Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
   <Config Name="SSO administrators group" Target="NUVIRA_OIDC_ADMIN_GROUP" Default="" Mode="" Description="Value of the groups claim that makes an account administrator (Entra ID: object ID of the group)." Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
   <Config Name="Log level" Target="NUVIRA_LOG" Default="info" Mode="" Description="debug, info or warn." Type="Variable" Display="advanced" Required="false" Mask="false">info</Config>
   <Config Name="WebSocket listen" Target="NUVIRA_WS_LISTEN" Default=":21116" Mode="" Description="TCP address of the WebSocket fallback, the app updates and the console; off to disable it." Type="Variable" Display="advanced" Required="false" Mask="false">:21116</Config>
