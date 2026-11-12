@@ -17,8 +17,8 @@
   <Project>https://nuvirahub.dev/en/pricing/</Project>
   <ReadMe>https://github.com/nuvira-hub/nuvira/blob/main/deploy/README.md</ReadMe>
   <TemplateURL>https://raw.githubusercontent.com/alexbn71/unraid-templates/main/NuviraHub/nuvira-server-pro.xml</TemplateURL>
-  <Overview>NuviraHub Pro server, for teams that support many computers with NuviraHub, the self-hosted remote desktop and remote support app for Windows and Linux.[br][br]
-Everything in the open source server (signalling, relay, signed app updates, end-to-end encrypted sessions) plus: server address books shared by the team, accounts and roles, central rules for the devices, web console, two-factor authentication, single sign-on (OpenID Connect), session log and custom installers.[br][br]
+  <Overview>NuviraHub Pro server, for teams that support many computers with NuviraHub, the self-hosted remote desktop and remote support app for Windows, macOS and Linux.[br][br]
+Everything in the open source server (signalling, relay, signed app updates, end-to-end encrypted sessions) plus: server address books shared by the team, accounts and roles, central rules for the devices, web console, two-factor authentication, single sign-on (OpenID Connect), session log and recordings, custom installers, a support queue, an inventory of the devices, a web client to control computers from the browser (phones included), TCP tunnels and a REST API.[br][br]
 Needs a NuviraHub Pro licence key (see nuvirahub.dev; free for members of the Founders Program). Without a key it works like the open source server. The app is the same for both servers.</Overview>
   <Category>Network:Other Tools:</Category>
   <WebUI>http://[IP]:[PORT:21116]/console/</WebUI>
@@ -28,6 +28,10 @@ Needs a NuviraHub Pro licence key (see nuvirahub.dev; free for members of the Fo
   <PostArgs/>
   <Requires>A NuviraHub Pro licence key; the server checks it online at start-up and once a day (7 days of grace without Internet). Forward port 21116 UDP (and TCP for the WebSocket fallback) from the router to Unraid. To sign in to the web console from the Internet, put it behind an HTTPS reverse proxy: plain-HTTP logins are accepted only from the local network. Back up the Data folder: it holds the server's identity, which the apps pin, and the key of the address books.</Requires>
   <Changes>
+### 2026-11-12 (image latest, for the apps 0.22)
+- Web client: phones and tablets (touch, on-screen keyboard that types any character, Paste, reconnection after switching app), adapt the remote resolution; console, web client and sign-on pages in French, German and Spanish address the user informally; the version shown under the sign-in forms; reset-password --rename. For the apps up to 0.22.6: https://nuvirahub.dev
+### 0.15.1 (2026-11-07)
+- For the apps 0.16.0: support queue with reports, inventory and Wake-on-LAN, web client, TCP tunnels, REST API, rules for privacy mode, terminal and remote printing: https://nuvirahub.dev
 ### 0.14.0 (2026-10-31)
 - Current release of the Pro server, for the apps up to 0.15.0 (Windows and Linux): https://nuvirahub.dev
   </Changes>
@@ -36,7 +40,7 @@ Needs a NuviraHub Pro licence key (see nuvirahub.dev; free for members of the Fo
   <Config Name="Data" Target="/data" Default="/mnt/user/appdata/nuvira-server-pro" Mode="rw" Description="Database, server certificate, address book key, and the app updates you publish to your devices (updates folder). Back up the whole folder." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/nuvira-server-pro</Config>
   <Config Name="Licence key" Target="NUVIRA_LICENSE_KEY" Default="" Mode="" Description="NuviraHub Pro licence key. Without it the Pro modules stay off (signalling and relay keep working)." Type="Variable" Display="always" Required="true" Mask="true"></Config>
   <Config Name="Admin user" Target="NUVIRA_ADMIN_USER" Default="admin" Mode="" Description="First administrator, created only if no account exists yet." Type="Variable" Display="always" Required="false" Mask="false">admin</Config>
-  <Config Name="Admin password" Target="NUVIRA_ADMIN_PASSWORD" Default="" Mode="" Description="At least 8 characters. Empty: a random password is written once to the log. Used only at the first start; lost password: docker exec nuvira-server-pro /nuvira-server reset-password." Type="Variable" Display="always" Required="false" Mask="true"></Config>
+  <Config Name="Admin password" Target="NUVIRA_ADMIN_PASSWORD" Default="" Mode="" Description="At least 8 characters. Empty: a random password is written once to the log. Used only at the first start; afterwards change it in the web console, or: docker exec nuvira-server-pro /nuvira-server reset-password [--rename NEW]." Type="Variable" Display="always" Required="false" Mask="true"></Config>
   <Config Name="Session log days" Target="NUVIRA_SESSION_LOG_DAYS" Default="365" Mode="" Description="Days the session log is kept." Type="Variable" Display="advanced" Required="false" Mask="false">365</Config>
   <Config Name="Public URL" Target="NUVIRA_PUBLIC_URL" Default="" Mode="" Description="https:// address of the console from the browser (reverse proxy), e.g. https://console.example.com. Needed by single sign-on." Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
   <Config Name="SSO provider" Target="NUVIRA_OIDC_ISSUER" Default="" Mode="" Description="OpenID Connect issuer, e.g. https://login.microsoftonline.com/TENANT-ID/v2.0 or https://accounts.google.com. Empty: no single sign-on." Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
